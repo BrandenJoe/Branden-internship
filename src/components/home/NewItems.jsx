@@ -80,7 +80,7 @@ const NewItems = () => {
 
           <Slider {...settings}>
      { items.map((item) =>(
-              <div >
+              <div key={item.id} >
                 <div className="nft__item">
                   <div className="author_list_pp">
                     <Link

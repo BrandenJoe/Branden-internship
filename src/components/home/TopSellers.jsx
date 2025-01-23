@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
+
 import axios from "axios";
-import Skeleton from "../UI/Skeleton";
-import { use } from "react";
+
+
 
 const TopSellers = () => {
   const [sellers, setSellers] = useState([]);
@@ -32,7 +32,7 @@ const TopSellers = () => {
           <div className="col-md-12">
             <ol className="author_list">
             { sellers.map((seller) =>(
-                <li >
+                <li key={seller.id} >
                   <div className="author_list_pp">
                     <Link to="/author">
                       <img

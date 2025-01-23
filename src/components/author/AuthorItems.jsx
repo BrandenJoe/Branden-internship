@@ -1,30 +1,50 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 const AuthorItems = () => {
-const [author, setAuthor] = useState([]);
+const {authorID} = useParams();
+const [author, setAuthor] = useState(null);
 const [loading, setLoading] = useState(true);
-
+const [error, setError] = useState(null);
   useEffect(() => {
 async function fetchData(){
-  const {data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=73855012`);
-  setAuthor(data);
-  setLoading(false);
+  try {
+    setLoading(true);
+    const { data } = await axios.get(
+      `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=73855012`
+    );
+    setAuthor(data);
+  } catch (err) {
+    setError("Failed to fetch data. Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+}
+fetchData();
+}, [authorID]);
+
+if (loading) {
+  return <div>Loading...</div>;
 }
 
-  }, []);
+if (error) {
+  return <div>{error}</div>;
+}
+
+if (!author) {
+  return <div>No data available.</div>;
+}
+
   return (
     <div className="de_tab_content">
       <div className="tab-1">
         <div className="row">
-          {new Array(8).fill(0).map((_, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
+          {author.nftCollection.map((nft) => (
+            <div key={nft.id} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link to="">
-                    <img className="lazy" src={AuthorImage} alt="" />
+                    <img className="lazy" src={nft.authorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
@@ -48,20 +68,20 @@ async function fetchData(){
                   </div>
                   <Link to="/item-details">
                     <img
-                      src={nftImage}
+                      src={nft.nftImage}
                       className="lazy nft__item_preview"
-                      alt=""
+                      alt={nft.title}
                     />
                   </Link>
                 </div>
                 <div className="nft__item_info">
                   <Link to="/item-details">
-                    <h4>Pinky Ocean</h4>
+                    <h4>{nft.name}</h4>
                   </Link>
-                  <div className="nft__item_price">2.52 ETH</div>
+                  <div className="nft__item_price">{nft.price} ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
-                    <span>97</span>
+                    <span>{nft.likes}</span>
                   </div>
                 </div>
               </div>
