@@ -1,11 +1,10 @@
 
-import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
-import AuthorImage from "../images/author_thumbnail.jpg";
+import AuthorBanner from "../images/author_banner.jpg";
 import React, { useEffect, useState } from "react";
 import { Link} from "react-router-dom";
 import axios from "axios";
-import { use } from "react";
+
 const Author = () => {
   
   const [author, setAuthor] = useState(null);
@@ -17,6 +16,9 @@ const Author = () => {
       setAuthor(data);
       setLoading(false);
   } fetchData(); }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -37,15 +39,15 @@ const Author = () => {
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
-                      <img src={AuthorImage} alt="" />
+                     {author && <img src={author.authorImage} alt="" />}
 
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
                         <h4>
-                          Monica Lucas
-                          <span className="profile_username">@monicaaaa</span>
+                         {author.authorName}
+                          <span className="profile_username">{author.tag}</span>
                           <span id="wallet" className="profile_wallet">
-                            UDHUHWudhwd78wdt7edb32uidbwyuidhg7wUHIFUHWewiqdj87dy7
+                          {author.address}
                           </span>
                           <button id="btn_copy" title="Copy Text">
                             Copy

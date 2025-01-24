@@ -44,7 +44,7 @@ if (!author) {
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link to="">
-                    <img className="lazy" src={nft.authorImage} alt="" />
+                    <img className="lazy" src={author.authorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
@@ -76,7 +76,7 @@ if (!author) {
                 </div>
                 <div className="nft__item_info">
                   <Link to="/item-details">
-                    <h4>{nft.name}</h4>
+                    <h4>{nft.title}</h4>
                   </Link>
                   <div className="nft__item_price">{nft.price} ETH</div>
                   <div className="nft__item_like">
