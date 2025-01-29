@@ -16,9 +16,9 @@ const CustomNextArrow = (props) => {
         display: "block", 
         background: "#000 ",
         color: "#fff",
-        scale: "3.0",
+        scale: "2.0",
         borderRadius: "50%",
-        right: "-10px", // Adjust positioning
+        right: "-50px", // Adjust positioning
         zIndex: 1,
       }}
       onClick={onClick}                                    
@@ -35,9 +35,9 @@ const CustomPrevArrow = (props) => {
         ...style,
         display: "block",
         background: "#000",
-        scale: "3.0",
+        scale: "2.0",
         borderRadius: "50%",
-        left: "-10px", // Adjust positioning
+        left: "-50px", // Adjust positioning
         zIndex: 1,
       }}
       onClick={onClick}
@@ -130,23 +130,23 @@ if (loading) {
 }
   return (
     
-     <section id="section-collections" className="no-bottom">
+     <section id="section-collections" className="no-bottom" >
       <div className="container">
         <div className="row">
-          <div className="col-lg-12">
+          <div className="col-lg-12"  >
             <div className="text-center">
               <h2>Hot Collections</h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <div className="slider-container">
+          <div className="slider-container" >
           <Slider {...settings}>
           { collection.map((collection,index ) => (
-              <div key={collection.id || index}>
-              <div className="nft_coll">
-                <div className="nft_wrap">
+              <div key={collection.id || index} >
+              <div className="nft_coll" style={{ margin: '3px' }}>
+                <div className="nft_wrap" >
                   <Link to="/item-details">
-                    <img src={collection.nftImage} className="lazy img-fluid" alt="" />
+                    <img src={collection.nftImage} className="lazy img-fluid" alt=""  />
                   </Link>
                 </div>
                 <div className="nft_coll_pp">
