@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Skeleton from "../UI/Skeleton";
 const AuthorItems = () => {
 const {authorID} = useParams();
 const [author, setAuthor] = useState(null);
@@ -24,8 +25,32 @@ fetchData();
 }, [authorID]);
 
 if (loading) {
-  return <div>Loading...</div>;
+  return (
+    <div className="de_tab_content">
+      <div className="tab-1">
+        <div className="row">
+          {[...Array(8)].map((_, index) => (
+            <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+              <div className="nft__item">
+              <div className="skeleton skeleton-text">
+              <Skeleton width="50px" height="50px" borderRadius="50%" /></div>
+                <div className="skeleton skeleton-img">
+                <Skeleton width="100%" height="200px" borderRadius="10px" />
+                </div>
+               
+                <div className="skeleton skeleton-text">
+                <Skeleton width="80%" height="20px" />
+                <Skeleton width="40%" height="15px" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
+
 
 if (error) {
   return <div>{error}</div>;
