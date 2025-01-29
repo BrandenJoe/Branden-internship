@@ -6,6 +6,8 @@ import React from "react";
 import Slider from "react-slick";
 import Timer from "./Countdown";
 import Skeleton from "../UI/Skeleton";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
  
 const NewItems = () => {
@@ -23,11 +25,32 @@ const NewItems = () => {
   
   
     const settings = {
+      arrows: true,
       dots: true,
       infinite: true,
       speed: 500,
       slidesToShow: 4,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+          },
+        },
+      ],
     };
     if (loading) {
       return (
@@ -77,7 +100,6 @@ const NewItems = () => {
             </div>
           </div>
           <div className="slider-container">
-
           <Slider {...settings}>
      { items.map((item) =>(
               <div key={item.id} >
@@ -114,7 +136,7 @@ const NewItems = () => {
                       </div>
                     </div>
   
-                    <Link to="/item-details">
+                    <Link to={`/item-details/${item.id}`}>
                       <img
                         src={item.nftImage}
                         className="lazy nft__item_preview"
