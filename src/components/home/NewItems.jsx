@@ -7,6 +7,46 @@ import Slider from "react-slick";
 import Timer from "./Countdown";
 import Skeleton from "../UI/Skeleton";
 
+const CustomNextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "#000 ",
+        color: "#fff",
+        scale: "2.0",
+        borderRadius: "50%",
+        right: "-50px", // Adjust positioning
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
+const CustomPrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`slick-prev ${className}`}
+      style={{
+        ...style,
+        display: "block",
+        background: "#000",
+        scale: "2.0",
+        borderRadius: "50%",
+        left: "-50px", // Adjust positioning
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
+
  
 const NewItems = () => {
   const [items, setItems] = useState([]);
@@ -21,14 +61,36 @@ const NewItems = () => {
   }, []);
 
   
-  
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 1
-    };
+  const settings = {
+    arrows: true,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: <CustomNextArrow />, // Use custom next arrow
+    prevArrow: <CustomPrevArrow />, // Use custom previous arrow
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
     if (loading) {
       return (
         <section id="section-collections" className="no-bottom">
@@ -81,7 +143,7 @@ const NewItems = () => {
           <Slider {...settings}>
      { items.map((item) =>(
               <div key={item.id} >
-                <div className="nft__item">
+                <div className="nft__item " style={{ margin: '3px' }}>
                   <div className="author_list_pp">
                     <Link
                       to="/author"
