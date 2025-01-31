@@ -6,6 +6,10 @@ import React from "react";
 import Slider from "react-slick";
 import Timer from "./Countdown";
 import Skeleton from "../UI/Skeleton";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const CustomNextArrow = (props) => {
   const { className, style, onClick } = props;
@@ -94,7 +98,7 @@ const NewItems = () => {
     if (loading) {
       return (
         <section id="section-collections" className="no-bottom">
-          <div className="container">
+          <div className="container" data-aos="fade-out">
             <div className="row">
               <div className="col-lg-12">
                 <div className="text-center">
@@ -105,7 +109,7 @@ const NewItems = () => {
               <div className="slider-container">
                 <Slider {...settings}>
                   {Array(5).fill(null).map((_, index) => (
-                    <div key={index}>
+                    <div key={index} >
                       <div className="nft_coll">
                         <div className="nft_wrap">
                           <Skeleton width="100%" height="200px" borderRadius="10px" />
@@ -134,12 +138,14 @@ const NewItems = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
+              <div data-aos="fade-in">  
               <h2>New Items</h2>
+              </div>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
+           <div data-aos="fade-in">
           <div className="slider-container">
-
           <Slider {...settings}>
      { items.map((item) =>(
               <div key={item.id} >
@@ -201,6 +207,7 @@ const NewItems = () => {
             ))
           }
            </Slider>
+           </div>
            </div>
         </div>
       </div>
