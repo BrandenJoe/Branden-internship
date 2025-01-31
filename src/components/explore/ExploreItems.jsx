@@ -112,7 +112,7 @@ const ExploreItems = () => {
             </div>
             <div className="nft__item_info">
               <Link to="/item-details">
-                <h4>Pinky Ocean</h4>
+                <h4>{item.title}</h4>
               </Link>
               <div className="nft__item_price">{item.price}ETH</div>
               <div className="nft__item_like">
