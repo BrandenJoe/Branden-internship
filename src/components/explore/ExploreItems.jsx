@@ -124,7 +124,6 @@ const ExploreItems = () => {
         </div>
       ))}
       {visible < explore.length && (
-      {visible < explore.length &&(
       <div className="col-md-12 text-center">
         <button onClick={loadMore}to="" id="loadmore" className="btn-main lead">
           Load more
