@@ -1,7 +1,7 @@
 import React, { useEffect, useState, } from "react";
 import EthImage from "../images/ethereum.svg";
 import { Link, } from "react-router-dom";
-
+import Skeleton from "../components/UI/Skeleton";
 import axios from "axios";
 const ItemDetails = () => {
   
@@ -14,8 +14,53 @@ const ItemDetails = () => {
     setLoading(false);
     window.scrollTo(0, 0);
   } fetchData();}, []);
+
   if (loading) {
-    return <div>Loading...</div>;
+    return(
+<div id="wrapper">
+      <div className="no-bottom no-top" id="content">
+        <div id="top"></div>
+        <section aria-label="section" className="mt90 sm-mt-0">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 text-center">
+              <Skeleton width="100%" height="500px" borderRadius="10px" />
+              </div>
+              <div className="col-md-6">
+                <div className="item_info">
+                  <h2> <Skeleton width="100%" height="50px" borderRadius="5px" /></h2>
+
+                  <div className="item_info_counts">
+                  <Skeleton width="100%" height="50px" borderRadius="5px" />
+                  </div>
+                  <p>
+                  <Skeleton width="100%" height="50px" borderRadius="5px" />
+                  </p>
+                  <div className="d-flex flex-row">        
+                  <Skeleton width="100%" height="50px" borderRadius="5px" />
+                    <div className="item_author">
+                     
+                      </div>
+                  </div>
+                  <div className="de_tab tab_simple">
+                    <div className="de_tab_content">    
+                      <div className="item_author">
+                      <Skeleton width="100%" height="70px" borderRadius="5px" />
+                      </div>
+                    </div>
+                    <div className="spacer-40"></div>
+                    <div className="nft-item-price">
+                    <Skeleton width="100%" height="70px" borderRadius="5px" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    )
   }
 
   return (
