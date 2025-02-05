@@ -4,7 +4,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Skeleton from "../UI/Skeleton";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const CustomNextArrow = (props) => {
   const { className, style, onClick } = props;
@@ -16,9 +19,9 @@ const CustomNextArrow = (props) => {
         display: "block", 
         background: "#000 ",
         color: "#fff",
-        scale: "3.0",
+        scale: "2.0",
         borderRadius: "50%",
-        right: "-10px", // Adjust positioning
+        right: "-50px", // Adjust positioning
         zIndex: 1,
       }}
       onClick={onClick}                                    
@@ -35,9 +38,9 @@ const CustomPrevArrow = (props) => {
         ...style,
         display: "block",
         background: "#000",
-        scale: "3.0",
+        scale: "2.0",
         borderRadius: "50%",
-        left: "-10px", // Adjust positioning
+        left: "-50px", // Adjust positioning
         zIndex: 1,
       }}
       onClick={onClick}
@@ -94,19 +97,19 @@ var settings = {
 
 if (loading) {
   return (
-    <section id="section-collections" className="no-bottom">
-      <div className="container">
+    <section id="section-collections" className="no-bottom" >
+      <div className="container" >
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>Hot Collections</h2>
+              <h2 >Hot Collections</h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <div className="slider-container">
+          <div className="slider-container" data-aos="zoom-in" >
             <Slider {...settings}>
               {Array(5).fill(null).map((_, index) => (
-                <div key={index}>
+                <div key={index}  >
                   <div className="nft_coll">
                     <div className="nft_wrap">
                       <Skeleton width="100%" height="200px" borderRadius="10px" />
@@ -130,23 +133,26 @@ if (loading) {
 }
   return (
     
-     <section id="section-collections" className="no-bottom">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="text-center">
-              <h2>Hot Collections</h2>
+     <section id="section-collections" className="no-bottom"   >
+      <div className="container"  >
+        <div className="row" >
+          <div className="col-lg-12"  >
+            <div className="text-center" >
+              <div data-aos="fade-in">
+              <h2 >Hot Collections</h2>
+              </div>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <div className="slider-container">
-          <Slider {...settings}>
+          <div data-aos="fade-in">
+          <div className="slider-container"  >
+          <Slider {...settings} >
           { collection.map((collection,index ) => (
-              <div key={collection.id || index}>
-              <div className="nft_coll">
-                <div className="nft_wrap">
+              <div key={collection.id || index} >
+              <div className="nft_coll" style={{ margin: '3px' }}>
+                <div className="nft_wrap" >
                   <Link to="/item-details">
-                    <img src={collection.nftImage} className="lazy img-fluid" alt="" />
+                    <img src={collection.nftImage} className="lazy img-fluid" alt=""  />
                   </Link>
                 </div>
                 <div className="nft_coll_pp">
@@ -165,6 +171,7 @@ if (loading) {
             </div>
           ))}
           </Slider>
+          </div>
           </div>
         </div>
       </div>

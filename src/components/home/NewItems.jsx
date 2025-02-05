@@ -6,8 +6,50 @@ import React from "react";
 import Slider from "react-slick";
 import Timer from "./Countdown";
 import Skeleton from "../UI/Skeleton";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
+const CustomNextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "#000 ",
+        color: "#fff",
+        scale: "2.0",
+        borderRadius: "50%",
+        right: "-50px", // Adjust positioning
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
+const CustomPrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`slick-prev ${className}`}
+      style={{
+        ...style,
+        display: "block",
+        background: "#000",
+        scale: "2.0",
+        borderRadius: "50%",
+        left: "-50px", // Adjust positioning
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
 
  
 const NewItems = () => {
@@ -23,39 +65,40 @@ const NewItems = () => {
   }, []);
 
   
-  
-    const settings = {
-      arrows: true,
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-          },
+  const settings = {
+    arrows: true,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: <CustomNextArrow />, // Use custom next arrow
+    prevArrow: <CustomPrevArrow />, // Use custom previous arrow
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
         },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-          },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
         },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-          },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
         },
-      ],
-    };
+      },
+    ],
+  };
     if (loading) {
       return (
         <section id="section-collections" className="no-bottom">
-          <div className="container">
+          <div className="container" data-aos="fade-out">
             <div className="row">
               <div className="col-lg-12">
                 <div className="text-center">
@@ -66,7 +109,7 @@ const NewItems = () => {
               <div className="slider-container">
                 <Slider {...settings}>
                   {Array(5).fill(null).map((_, index) => (
-                    <div key={index}>
+                    <div key={index} >
                       <div className="nft_coll">
                         <div className="nft_wrap">
                           <Skeleton width="100%" height="200px" borderRadius="10px" />
@@ -95,15 +138,18 @@ const NewItems = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
+              <div data-aos="fade-in">  
               <h2>New Items</h2>
+              </div>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
+           <div data-aos="fade-in">
           <div className="slider-container">
           <Slider {...settings}>
      { items.map((item) =>(
               <div key={item.id} >
-                <div className="nft__item">
+                <div className="nft__item " style={{ margin: '3px' }}>
                   <div className="author_list_pp">
                     <Link
                       to="/author"
@@ -161,6 +207,7 @@ const NewItems = () => {
             ))
           }
            </Slider>
+           </div>
            </div>
         </div>
       </div>

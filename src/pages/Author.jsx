@@ -16,6 +16,7 @@ const Author = () => {
       setAuthor(data);
       setLoading(false);
   } fetchData(); }, []);
+  
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -58,7 +59,7 @@ const Author = () => {
                   </div>
                   <div className="profile_follow de-flex">
                     <div className="de-flex-col">
-                      <div className="profile_follower">573 followers</div>
+                      <div className="profile_follower">{author.followers} followers</div>
                       <Link to="#" className="btn-main">
                         Follow
                       </Link>
