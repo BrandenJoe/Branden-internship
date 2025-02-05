@@ -25,29 +25,15 @@ const Author = () => {
         <section aria-label="section">
           <div className="container">
             <div className="row">
+            <Skeleton width="100%" height="50px" borderRadius="5px" />
               <div className="col-md-12">
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
-                    <div className="profile_avatar">
-                    <Skeleton width="100%" height="200px" borderRadius="10px" />
-
-                      <i className="fa fa-check"></i>
-                      <div className="profile_name">
-                      <Skeleton width="100%" height="200px" borderRadius="10px" />
-                        <h4>
-                        <Skeleton width="100%" height="200px" borderRadius="10px" />
-                          <span className="profile_username"> <Skeleton width="100%" height="200px" borderRadius="10px" /></span>
-                          <span id="wallet" className="profile_wallet">
-                          <Skeleton width="100%" height="200px" borderRadius="10px" />
-                          </span>
-                        </h4>
-                      </div>
-                    </div>
+                  <Skeleton width="100%" height="50px" borderRadius="5px" />
                   </div>
                   <div className="profile_follow de-flex">
                     <div className="de-flex-col">
-                      <div className="profile_follower">  <Skeleton width="50%" height="50px" borderRadius="10px" /></div>
-                  
+                    <Skeleton width="100%" height="50px" borderRadius="5px" />
                     </div>
                   </div>
                 </div>
@@ -55,7 +41,7 @@ const Author = () => {
 
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                <Skeleton width="100%" height="200px" borderRadius="10px" />
+                  <AuthorItems />
                 </div>
               </div>
             </div>
@@ -63,7 +49,7 @@ const Author = () => {
         </section>
       </div>
     </div>
-    );
+    )
   }
   return (
     <div id="wrapper">
