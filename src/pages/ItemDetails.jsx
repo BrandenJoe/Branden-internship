@@ -28,29 +28,32 @@ const ItemDetails = () => {
               </div>
               <div className="col-md-6">
                 <div className="item_info">
-                  <h2> <Skeleton width="100%" height="50px" borderRadius="5px" /></h2>
+                  <h2> <Skeleton width="80%" height="50px" borderRadius="5px" /></h2>
 
                   <div className="item_info_counts">
-                  <Skeleton width="100%" height="50px" borderRadius="5px" />
+                  <Skeleton width="10%" height="40px" borderRadius="5px" /><Skeleton width="10%" height="40px" borderRadius="5px" />
                   </div>
                   <p>
-                  <Skeleton width="100%" height="50px" borderRadius="5px" />
+                  <Skeleton width="100%" height="90px" borderRadius="5px" />
                   </p>
+                  <Skeleton width="20%" height="20px" borderRadius="5px" />
                   <div className="d-flex flex-row">        
-                  <Skeleton width="100%" height="50px" borderRadius="5px" />
+                  <Skeleton width="40%" height="35px" borderRadius="5px" />
                     <div className="item_author">
                      
                       </div>
                   </div>
                   <div className="de_tab tab_simple">
-                    <div className="de_tab_content">    
+                    <div className="de_tab_content"> 
+                    <Skeleton width="20%" height="20px" borderRadius="5px" />   
                       <div className="item_author">
-                      <Skeleton width="100%" height="70px" borderRadius="5px" />
+                      <Skeleton width="40%" height="60px" borderRadius="5px" />
                       </div>
                     </div>
                     <div className="spacer-40"></div>
+                    <Skeleton width="10%" height="20px" borderRadius="5px" />   
                     <div className="nft-item-price">
-                    <Skeleton width="100%" height="70px" borderRadius="5px" />
+                    <Skeleton width="20%" height="40px" borderRadius="5px" />
                     </div>
                   </div>
                 </div>
