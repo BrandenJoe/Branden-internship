@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
+
 const AuthorItems = () => {
 const {authorID} = useParams();
 const [author, setAuthor] = useState(null);
@@ -18,18 +19,21 @@ async function fetchData(){
   } catch (err) {
     setError("Failed to fetch data. Please try again later.");
   } finally {
+    setTimeout(() => {
     setLoading(false);
-  }
+  },3000);
+}
 }
 fetchData();
 }, [authorID]);
 
-if (loading) {
+
   return (
     <div className="de_tab_content">
       <div className="tab-1">
         <div className="row">
-          {[...Array(8)].map((_, index) => (
+          {loading ? (
+          [...Array(8)].map((_, index) => (
             <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
               <div className="nft__item">
               <div className="skeleton skeleton-text">
@@ -44,27 +48,12 @@ if (loading) {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
-
-if (error) {
-  return <div>{error}</div>;
-}
-
-if (!author) {
-  return <div>No data available.</div>;
-}
-
-  return (
-    <div className="de_tab_content">
-      <div className="tab-1">
-        <div className="row">
-          {author.nftCollection.map((nft) => (
+          ))
+  ):
+(
+    
+          author.nftCollection.map((nft) => (
             <div key={nft.id} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
               <div className="nft__item">
                 <div className="author_list_pp">
@@ -111,7 +100,8 @@ if (!author) {
                 </div>
               </div>
             </div>
-          ))}
+          ))
+        )}
         </div>
       </div>
     </div>
