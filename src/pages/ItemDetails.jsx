@@ -1,15 +1,15 @@
 import React, { useEffect, useState, } from "react";
 import EthImage from "../images/ethereum.svg";
-import { Link, } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import Skeleton from "../components/UI/Skeleton";
 import axios from "axios";
 const ItemDetails = () => {
-  
+  const 
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
-    const {data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=17914494`);
+    const {data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?${nftId}`);
     setItems(data);
     setLoading(false);
     window.scrollTo(0, 0);
