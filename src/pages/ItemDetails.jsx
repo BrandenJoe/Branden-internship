@@ -1,10 +1,10 @@
 import React, { useEffect, useState, } from "react";
 import EthImage from "../images/ethereum.svg";
-import { Link,  } from "react-router-dom";
+import { Link, useParams  } from "react-router-dom";
 import Skeleton from "../components/UI/Skeleton";
 import axios from "axios";
 const ItemDetails = () => {
-  const 
+  const { nftId } = useParams();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {

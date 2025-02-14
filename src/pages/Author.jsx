@@ -2,20 +2,22 @@
 import AuthorItems from "../components/author/AuthorItems";
 import AuthorBanner from "../images/author_banner.jpg";
 import React, { useEffect, useState } from "react";
-import { Link} from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import axios from "axios";
 
 const Author = () => {
   const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
+  const {authorId} = useParams();
   useEffect(() => {
     async function fetchData(){
-      const{data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=73855012`);
+      
+      const{data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`);
       setAuthor(data);
       setTimeout(() => {
         setLoading(false)
       }, 3000);
-  } fetchData(); }, []);
+  } fetchData(); }, [authorId]);
   
   return (
     <div id="wrapper">
