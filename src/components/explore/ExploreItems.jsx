@@ -6,6 +6,7 @@ import axios from 'axios';
 import Skeleton from "../UI/Skeleton";
 const ExploreItems = () => {
   const {authorId} = useParams();
+  const {nftId} = useParams();
   const [explore, setExplore] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(8);
@@ -107,12 +108,12 @@ const ExploreItems = () => {
                   </div>
                 </div>
               </div>
-              <Link to="/item-details">
+              <Link to={`/item-details/${item.nftId}`}>
                 <img src={item.nftImage} className="lazy nft__item_preview" alt="" />
               </Link>
             </div>
             <div className="nft__item_info">
-              <Link to="/item-details">
+              <Link to={`/item-details/${item.nftId}`}>
                 <h4>{item.title}</h4>
               </Link>
               <div className="nft__item_price">{item.price}ETH</div>
