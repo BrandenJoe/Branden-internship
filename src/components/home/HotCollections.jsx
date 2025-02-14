@@ -151,12 +151,12 @@ if (loading) {
               <div key={collection.id || index} >
               <div className="nft_coll" style={{ margin: '3px' }}>
                 <div className="nft_wrap" >
-                  <Link to="/item-details">
+                  <Link to="/item-details/:nftId">
                     <img src={collection.nftImage} className="lazy img-fluid" alt=""  />
                   </Link>
                 </div>
                 <div className="nft_coll_pp">
-                  <Link to="/author">
+                  <Link to="/author/:authorId">
                     <img className="lazy pp-coll" src={collection.authorImage} alt="" />
                   </Link>
                   <i className="fa fa-check"></i>
