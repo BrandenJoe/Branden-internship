@@ -27,13 +27,13 @@ async function fetchData(){
 fetchData();
 }, [authorID]);
 
-
+if(loading) {
   return (
     <div className="de_tab_content">
       <div className="tab-1">
         <div className="row">
-          {loading ? (
-          [...Array(8)].map((_, index) => (
+
+          {Array(8).map((_, index) => (
             <div key={index} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
               <div className="nft__item">
               <div className="skeleton skeleton-text">
@@ -49,16 +49,16 @@ fetchData();
               </div>
             </div>
 
-          ))
-  ):error ? (
-    <p>{error}</p>
-  ) : author && author.nftCollection && author.nftCollection.length > 0 ? (
-          author.nftCollection.map((nft) => (
-            <div key={author.nft.id} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+))}
+);}
+return (
+  <>
+            author.nftCollection.map((nft) => (
+            <div key={nft.id} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
               <div className="nft__item">
                 <div className="author_list_pp">
-                  <Link to={`/author/${author.authorId}`}>
-                    <img className="lazy" src={author.authorImage} alt="" />
+                  <Link to={`/author/${nft.authorId}`}>
+                    <img className="lazy" src={nft.authorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
@@ -80,7 +80,7 @@ fetchData();
                       </div>
                     </div>
                   </div>
-                  <Link to={`/item-details/${author.nftId}`}>
+                  <Link to={`/item-details/${nft.nftId}`}>
                     <img
                       src={nft.nftImage}
                       className="lazy nft__item_preview"
@@ -89,10 +89,10 @@ fetchData();
                   </Link>
                 </div>
                 <div className="nft__item_info">
-                  <Link to={`/item-details/${author.nft.id}`}>
+                  <Link to={`/item-details/${nft.nftId}`}>
                     <h4>{author.nft.title}</h4>
                   </Link>
-                  <div className="nft__item_price">{author.nft.price} ETH</div>
+                  <div className="nft__item_price">{nft.price} ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
                     <span>{nft.likes}</span>
@@ -101,12 +101,14 @@ fetchData();
               </div>
             </div>
           ))
-        ):  (
+         ) :  (
           <p>No NFTs found for this author.</p>
-        )}
+        )
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 
