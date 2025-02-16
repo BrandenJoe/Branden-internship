@@ -9,7 +9,7 @@ const ItemDetails = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
-    const {data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?${nftId}`);
+    const {data} = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`);
     setItems(data);
     setLoading(false);
     window.scrollTo(0, 0);
