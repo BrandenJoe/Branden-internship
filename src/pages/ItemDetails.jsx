@@ -13,7 +13,7 @@ const ItemDetails = () => {
     setItems(data);
     setLoading(false);
     window.scrollTo(0, 0);
-  } fetchData();}, []);
+  } fetchData();}, [nftId]);
 
   if (loading) {
     return(

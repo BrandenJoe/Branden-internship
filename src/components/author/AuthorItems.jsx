@@ -4,7 +4,7 @@ import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 
 const AuthorItems = () => {
-const {authorID} = useParams();
+const {authorId} = useParams();
 const [author, setAuthor] = useState({nftCollection: []});
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ async function fetchData(){
   try {
     setLoading(true);
     const { data } = await axios.get(
-      `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorID}`
+      `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`
     );
     setAuthor(data);
   } catch (err) {
@@ -25,7 +25,7 @@ async function fetchData(){
 }
 }
 fetchData();
-}, [authorID]);
+}, [authorId]);
 
 if (loading) {
   return (
@@ -62,8 +62,8 @@ return (
             <div key={nft.id} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
               <div className="nft__item">
                 <div className="author_list_pp">
-                  <Link to={`/author/${nft.authorId}`}>
-                    <img className="lazy" src={nft.authorImage} alt="" />
+                  <Link to={`/author/${authorId}`}>
+                    <img className="lazy" src={author.authorImage} alt={author.authorImage} />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
