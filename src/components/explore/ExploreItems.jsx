@@ -39,18 +39,25 @@ const ExploreItems = () => {
              
                 {Array(8).fill(null).map((_, index) => (
                   <div key={index}>
-                    <div className="nft_coll">
-                      <div className="nft_wrap">
-                        <Skeleton width="100%" height="200px" borderRadius="10px" />
-                      </div>
-                      <div className="nft_coll_pp">
-                        <Skeleton width="50px" height="50px" borderRadius="50%" />
-                      </div>
-                      <div className="nft_coll_info">
-                        <Skeleton width="80%" height="20px" />
-                        <Skeleton width="40%" height="15px" />
-                      </div>
-                    </div>
+                    <div className="nft__item">
+            <div className="author_list_pp">
+            <Skeleton width="20%" height="50px" borderRadius="50%" />
+            </div>
+            <div className="de_countdown">
+            <Skeleton width="40%" height="200px" borderRadius="10px" />
+            </div>
+            <div className="nft__item_wrap">
+            
+            </div>
+            <div className="nft__item_info">
+             
+             <div className="nft__item_price">
+
+              </div>
+              <div className="nft__item_like">
+              </div>
+            </div>
+          </div>
                   </div>
                 ))}
       
