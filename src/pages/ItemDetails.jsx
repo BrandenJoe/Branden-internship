@@ -3,6 +3,10 @@ import EthImage from "../images/ethereum.svg";
 import { Link, useParams  } from "react-router-dom";
 import Skeleton from "../components/UI/Skeleton";
 import axios from "axios";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 const ItemDetails = () => {
   const { nftId } = useParams();
   const [items, setItems] = useState([]);
@@ -67,38 +71,44 @@ const ItemDetails = () => {
   }
 
   return (
-    <div id="wrapper">
+    <div id="wrapper" >
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
         <section aria-label="section" className="mt90 sm-mt-0">
-          <div className="container">
-            <div className="row">
+          <div className="container" >
+            <div className="row" >
               <div className="col-md-6 text-center">
                 <img
                   src={items.nftImage}
                   className="img-fluid img-rounded mb-sm-30 nft-image"
                   alt=""
+                   data-aos="fade-right" data-aos-duration="2000"
                 />
               </div>
               <div className="col-md-6">
                 <div className="item_info">
-                  <h2>{items.title} #{items.tag}</h2>
+                  <div data-aos="fade-left" data-aos-duration="2000">
+                  <h2  >{items.title} #{items.tag}                    
+                  </h2>
+                  </div>
 
                   <div className="item_info_counts">
-                    <div className="item_info_views">
+                    <div className="item_info_views" data-aos="fade-left" data-aos-duration="2000">
                       <i className="fa fa-eye"></i>
                       {items.views}
                     </div>
-                    <div className="item_info_like">
+                    <div className="item_info_like" data-aos="fade-left" data-aos-duration="2000" >
                       <i className="fa fa-heart"></i>
                       {items.likes}
                     </div>
                   </div>
+                  <div data-aos="fade-left" data-aos-duration="2000">
                   <p>
                     {items.description}
                   </p>
+                  </div>
                   <div className="d-flex flex-row">
-                    <div className="mr40">
+                    <div className="mr40"  data-aos="fade-left" data-aos-duration="2000">
                       <h6>Owner</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
@@ -114,8 +124,10 @@ const ItemDetails = () => {
                     </div>
                     <div></div>
                   </div>
-                  <div className="de_tab tab_simple">
-                    <div className="de_tab_content">
+                  <div data-aos="fade-left" data-aos-duration="1000">
+                  <div className="de_tab tab_simple" >
+                
+                    <div className="de_tab_content"  data-aos="fade-left" data-aos-duration="2000">
                       <h6>Creator</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
@@ -130,12 +142,15 @@ const ItemDetails = () => {
                       </div>
                     </div>
                     <div className="spacer-40"></div>
+                    <div  data-aos="fade-left" data-aos-duration="1000">
                     <h6>Price</h6>
-                    <div className="nft-item-price">
+                    </div>
+                    <div className="nft-item-price"  data-aos="fade-left" data-aos-duration="1000">
                       <img src={EthImage} alt="" />
                       <span>{items.price}</span>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
