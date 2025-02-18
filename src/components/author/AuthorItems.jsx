@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 const AuthorItems = () => {
 const {authorId} = useParams();
 const [author, setAuthor] = useState({nftCollection: []});
@@ -60,6 +63,7 @@ return (
       <div className="row">
         {author.nftCollection.map((nft) => (
             <div key={nft.id} className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+              <div data-aos="zoom-out" data-aos-duration="1000">
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link to={`/author/${authorId}`}>
@@ -104,6 +108,7 @@ return (
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           ))}
       </div>
