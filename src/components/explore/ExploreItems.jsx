@@ -41,20 +41,21 @@ const ExploreItems = () => {
                   <div key={index}>
                     <div className="nft__item">
             <div className="author_list_pp">
-            <Skeleton width="20%" height="50px" borderRadius="50%" />
+            <Skeleton width="100%" height="50px" borderRadius="50%" />
             </div>
             <div className="de_countdown">
-            <Skeleton width="40%" height="200px" borderRadius="10px" />
+            <Skeleton width="100%" height="25px" borderRadius="10px" />
             </div>
             <div className="nft__item_wrap">
-            
+            <Skeleton width="100%" height="200px" borderRadius="10px" />
             </div>
             <div className="nft__item_info">
-             
+            <Skeleton width="50%" height="15px" borderRadius="4px" />
              <div className="nft__item_price">
-
+             <Skeleton width="40%" height="10px" borderRadius="10px" />
               </div>
               <div className="nft__item_like">
+              <Skeleton width="40px" height="15px" borderRadius="10px" />
               </div>
             </div>
           </div>
